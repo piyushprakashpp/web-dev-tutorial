@@ -1,0 +1,69 @@
+﻿@{
+    var result = "";
+    if (IsPost)
+    {
+        var empname = Request["empname"];
+        var empid = Request["empid"];
+        var email = Request["email"];
+        var action = Request["action"];
+        var userData = empname + "," + empid +
+            "," + email + action;
+
+        var dataFile = Server.MapPath("~/App_Data/employee.txt");
+        File.WriteAllText(@dataFile, userData);
+        result = "Information saved.";
+    }
+}
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css"  href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"/>
+    
+<head>
+    <title>Write Data to a File</title>
+</head>
+<body>
+    <div class="container">
+      <div class="content">
+        <div class="page-header">
+    <form id="form1" method="post">
+    <div>
+        <table>
+            <tr>
+                <td>Employee Name:</td>
+                <td><input id="Empname" name="Empname" type="text" /></td>
+
+            </tr>
+            <tr>
+                <td>Employee Id:</td>
+                <td><input id="Empid" name="Empid" type="number" /></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input id="Email" name="Email" type="text" /></td>
+            </tr>
+                    <td>Actions
+                    <select id="action">
+                    <option>Intern </option>
+                    <option>Sr. Tech</option>
+                    <option>Business Deveopment</option>
+                    <option>Team Lead</option>
+                    </td>
+                </select>                     
+                
+                    </tr>
+</div>
+</div>   </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+    @if(result != ""){
+        <p>Result: @result</p>
+    }
+    </div>
+    </form>
+</body>
+</html>

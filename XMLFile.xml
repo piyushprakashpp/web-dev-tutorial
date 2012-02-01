@@ -1,0 +1,9 @@
+﻿    var submit = Request.Form("submit").Count; <br>  
+    if( submit > 0 ){ <br>  
+      // The user has pressed the submit button <br>  
+      // So the code to save the data will take place here. <br>  
+    } <br>  
+    else { <br>  
+      // We could also place our form in this part of code, which  <br>  
+    must be written in Jscript, though this isn't recommended. <br>  
+    } 
