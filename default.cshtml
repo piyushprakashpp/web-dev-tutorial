@@ -1,17 +1,16 @@
 ﻿@{
-    var result = "";
+    var result ="";
     if (IsPost)
     {
         var empname = Request["empname"];
         var empid = Request["empid"];
-        var email = Request["email"];
-        var action = Request["action"];
+        var desig = Request["desig"];
+        
         var userData = empname + "," + empid +
-            "," + email + action;
-
+            "," + desig + Environment.NewLine;
         var dataFile = Server.MapPath("~/App_Data/employee.txt");
-        File.WriteAllText(@dataFile, userData);
-        result = "Information saved.";
+        File.AppendAllText(@dataFile, userData);
+        result = "Information saved";
     }
 }
 <!DOCTYPE html>
@@ -22,6 +21,9 @@
     <title>Write Data to a File</title>
 </head>
 <body>
+      <p>
+<a href="http://localhost:8080/employeeDetails.cshtml">Employee List</a> This is a link to Employee List
+</p>
     <div class="container">
       <div class="content">
         <div class="page-header">
@@ -37,11 +39,9 @@
                 <td>Employee Id:</td>
                 <td><input id="Empid" name="Empid" type="number" /></td>
             </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input id="Email" name="Email" type="text" /></td>
-            </tr>
-                    <td>Actions
+            
+                    <td>Designaton</td> 
+            <td>
                     <select id="action">
                     <option>Intern </option>
                     <option>Sr. Tech</option>
