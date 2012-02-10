@@ -1,0 +1,58 @@
+﻿@{
+    
+    Array userData = null;
+    char[] delimiterChar = {','};
+
+    var dataFile = Server.MapPath("~/App_Data/employee.txt");
+
+    if (File.Exists(dataFile)) {
+        userData = File.ReadAllLines(dataFile);       
+    }    
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css"  href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"/> 
+    <title>Reading Data from a File</title>
+</head>
+<body>
+    <div class="container">
+      <div class="content">
+        <h1>Employee List</h1>            
+         <div class="span10"> 
+         @if (userData != null && userData.Length > 0){   
+            <table class="table table-bordered">
+            <tr>
+                <th>Emp Id</th>
+               <th>Employee Name</th>
+               <th>Designation</th>
+                             
+             </tr>     
+                for{
+                <a href="Edit">Edit</a>
+                }
+           
+            @foreach (string dataLine in userData) {   
+                <tr>
+                @foreach (string dataItem in dataLine.Split(delimiterChar)) {
+                
+                    <td>@dataItem</td>
+                
+                }        
+                </tr>           
+            
+            }
+         </table>             
+        }               
+        else {            
+            <strong>Not found</strong>
+        }
+        <p>Edited time @DateTime.Now</p>
+
+        
+    </div>
+     </div>  
+    </div>
+    
+</body>
+</html>
