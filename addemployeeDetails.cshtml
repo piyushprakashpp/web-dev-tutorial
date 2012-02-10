@@ -1,0 +1,68 @@
+﻿@{
+    
+    var result = "";
+    if (IsPost)
+    {
+        var empName = Request["empName"];
+        var desigName = Request["desigName"];
+        var empId = Request["empId"];
+        var userData = empName + "," + desigName +
+            "," +empId+","+  Environment.NewLine ;
+        var dataFile = Server.MapPath("~/App_Data/employee.txt");
+        File.AppendAllText (@dataFile, userData);
+        result = "Information saved.";
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee List Add Form</title>
+</head>
+<body>
+    <p>
+<a href="http://localhost:8080/employeeDetails.cshtml">Employee List</a>Employee List
+</p>
+    <p>
+<a href="http://localhost:8080/employee.txt">Employee Details in Text</a>Employee Details in Text
+</p>
+    <p>
+<a href="http://localhost:8080/employeeDetails.cshtml">Search Employee</a>Search Employee Details
+</p>
+    <form id="form1" method="post">
+        <div class="controls">
+    
+       <h1>Employee ADD Details </h1>      
+        <form class="form-stacked" action="">
+    	    <fieldset>
+                <div class="clearfix"> 
+                    <input id="empName" class="xlarge" type="text" size="30" name="empName">
+                    <label for="empName">Employee Name</label>
+                	<div class="input">
+                    	<input id="empId" class="xlarge" type="text" size="30" name="empId">
+                        <label for="empId">EmpId</label>
+                    </div>        
+                    	<div class="input">
+                                                <label for="desigName">Designation</label>
+                                                <select id="desigName" class="medium" name="desigName">
+                                                    <option>Intern</option>
+                                                    <option>Developer</option>
+                                                    <option>Team Lead</option>
+                                                    <option>Sr. Tech Designer</option>
+                                                    <option>Business Development</option>
+                                                </select>
+                                            </div>
+                                            <div class="action">
+                                                <input class="btn success" type="submit" value="Submit">                
+                                                <button class="btn danger" type="reset"> Cancel</button>
+                                            </div> 
+                                        </div>           
+                                </div>
+                    <div>
+    @if(result != ""){
+        <p>Result: @result</p>
+    }
+    </div>
+    </form>
+            
+</body>
+</html>
