@@ -1,0 +1,67 @@
+<html>  
+<head>  
+    <title>HTML Nested div positioning</title>  
+    <style type="text/css">  
+        .outerDiv {  
+            border: solid 1px black;  
+            width: 300px;  
+            height: 150px;  
+            position: relative;  
+            color: #FFFFFF;  
+            font-family: verdana;  
+            font-weight: bold;  
+            font-size: 11px;  
+            text-align: center;  
+        }  
+          
+        .nestedDivTL {  
+            background-color: red;  
+            width: 100px;  
+            position: absolute;  
+            top: 10px;  
+            left: 10px;  
+        }  
+          
+        .nestedDivTR {  
+            background-color: blue;  
+            width: 100px;  
+            position: absolute;  
+            top: 10px;  
+            right: 10px;  
+        }  
+          
+        .nestedDivBL {  
+            background-color: green;  
+            width: 100px;  
+            position: absolute;  
+            bottom: 10px;  
+            left: 10px;  
+        }  
+          
+        .nestedDivBR {  
+            background-color: brown;  
+            width: 100px;  
+            position: absolute;  
+            bottom: 10px;  
+            right: 10px;  
+        }  
+    </style>  
+</head> 
+ 
+<body>  
+    <div class="outerDiv">  
+        <div class="nestedDivTL">  
+            div position top left  
+        </div>  
+        <div class="nestedDivTR">  
+            div position top right  
+        </div>  
+        <div class="nestedDivBL">  
+            div position bottom left  
+        </div>  
+        <div class="nestedDivBR">  
+            div position bottom right  
+        </div>  
+    </div>  
+</body>  
+</html>  
