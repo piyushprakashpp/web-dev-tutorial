@@ -1,12 +1,17 @@
-#INCLUDE<STDIO.H>
-int main()
+#include<stdio.h>
+#include<conio.h>
+void main()
 {
-	f=1,num,i=1;
+	clrscr();
+	int fact=1,c,n;
+
 	printf("Enter a number");
-	scanf("%d", &num);
-	while(i<num)
-	f=f*i;
-	i++;
-	printf("Factorial of %d: %d", num);
-	return(0);
+	scanf("%d", &n);
+
+	for(c=1;c<=n;c++)
+	{
+		fact=fact*c;
+	}
+	printf("Factorial of %d= :%d", n, fact);
+	getch();
 }
